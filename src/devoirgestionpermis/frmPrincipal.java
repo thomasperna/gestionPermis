@@ -314,6 +314,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                 for (Eleve eleve : gst.getLesElevesInscrits())
                    {
                        cboElevesInscrits.addItem(eleve.getNomEleve());
+                       
                    }
             }
         } 
@@ -331,7 +332,20 @@ public class frmPrincipal extends javax.swing.JFrame {
 
     private void cboElevesInscritsItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboElevesInscritsItemStateChanged
         // TODO add your handling code here:
-        
+        if(evt.getStateChange()==ItemEvent.SELECTED)
+        {
+            // On efface le JTABLE des compétences
+            while(dtmTests.getRowCount()!=0)
+            {
+                dtmTests.removeRow(0);
+            }
+            for(Test t : gst.getLesElevesInscrits().get(cboElevesInscrits.getSelectedIndex()).getSesTests())
+            {
+               Vector v=new Vector();
+               v.add(t.getNomTest());
+               dtmTests.addRow(v);
+            }
+        }
         // A vous de jouer
         
         
