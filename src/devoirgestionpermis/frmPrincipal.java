@@ -218,19 +218,12 @@ public class frmPrincipal extends javax.swing.JFrame {
         gst.getTousLesEleves().add(eleve4);
         gst.getTousLesEleves().add(eleve5);
         
-////        for(Eleve eleve:gst.getTousLesEleves()){
-////            Vector v =new Vector();
-////            v.add(eleve.getNomEleve());
-////            dlmEleves.addRow(v); 
-//        }
+        // Ajouter les tests au gestionnaire
         gst.getTousLesTests().add(test1);
         gst.getTousLesTests().add(test2);
         gst.getTousLesTests().add(test3);
         gst.getTousLesTests().add(test4);
         gst.getTousLesTests().add(test5);
-        
-        // Ajouter les tests au gestionnaire
-        
         
         // Remplir la liste de tous les élèves
         for(Eleve eleve : gst.getTousLesEleves()){
@@ -250,13 +243,23 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void btnInscriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInscriptionActionPerformed
-        // TODO add your handling code here:
-
         // A vous de jouer
-        
-        
-        
-        
+        if(lstEleves.getSelectedIndex()== -1)
+        {
+            JOptionPane.showMessageDialog(this, "Sélectionner un élève");
+        }
+        else{
+            if(lstTests.getSelectedIndex() == -1)
+            {
+                JOptionPane.showMessageDialog(this, "Sélectionner un test");
+            }
+            else
+            {
+                if(gst.GetUnEleve(lstEleves.getSelectedIndex())){
+                    
+                }
+            }
+        } 
         
     }//GEN-LAST:event_btnInscriptionActionPerformed
 
