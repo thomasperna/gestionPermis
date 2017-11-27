@@ -212,7 +212,22 @@ public class frmPrincipal extends javax.swing.JFrame {
         Test test5 = new Test(5,"Test n°5", 0, false);
         
         // Ajouter les élèves au gestionnaire
+        gst.getTousLesEleves().add(eleve1);
+        gst.getTousLesEleves().add(eleve2);
+        gst.getTousLesEleves().add(eleve3);
+        gst.getTousLesEleves().add(eleve4);
+        gst.getTousLesEleves().add(eleve5);
         
+////        for(Eleve eleve:gst.getTousLesEleves()){
+////            Vector v =new Vector();
+////            v.add(eleve.getNomEleve());
+////            dlmEleves.addRow(v); 
+//        }
+        gst.getTousLesTests().add(test1);
+        gst.getTousLesTests().add(test2);
+        gst.getTousLesTests().add(test3);
+        gst.getTousLesTests().add(test4);
+        gst.getTousLesTests().add(test5);
         
         // Ajouter les tests au gestionnaire
         
@@ -226,7 +241,10 @@ public class frmPrincipal extends javax.swing.JFrame {
         lstEleves.setModel(dlmEleves);
 
         // Remplir la liste de tous les tests
-        
+        for(Test test:gst.getTousLesTests()){
+            dlmTests.addElement(test.getNomTest());
+        }
+        lstTests.setModel(dlmTests);
         
         
     }//GEN-LAST:event_formWindowOpened
