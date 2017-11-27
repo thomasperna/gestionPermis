@@ -334,7 +334,6 @@ public class frmPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(evt.getStateChange()==ItemEvent.SELECTED)
         {
-            // On efface le JTABLE des compétences
             while(dtmTests.getRowCount()!=0)
             {
                 dtmTests.removeRow(0);
