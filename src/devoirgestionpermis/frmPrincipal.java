@@ -244,6 +244,9 @@ public class frmPrincipal extends javax.swing.JFrame {
 
     private void btnInscriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInscriptionActionPerformed
         // A vous de jouer
+        boolean trouveEleve=false;
+        boolean estVide=false;
+        boolean trouveTest=false;
         if(lstEleves.getSelectedIndex()== -1)
         {
             JOptionPane.showMessageDialog(this, "Sélectionner un élève");
@@ -255,15 +258,39 @@ public class frmPrincipal extends javax.swing.JFrame {
             }
             else
             {
-              if(gst.getLesElevesInscrits().isEmpty())
-              {
-                 Eleve e=gst.GetUnEleve(lstEleves.getSelectedIndex()); 
-                 Test t=gst.GetUnTest(lstTests.getSelectedIndex());
-                 e.getSesTests().add(t);
-                    // On l'ajoute à notre liste des inscrits dans le gestionnaire
+                if(gst.getLesElevesInscrits().isEmpty())
+                {
+                    Eleve e=gst.GetUnEleve(lstEleves.getSelectedIndex()); 
+                    Test t=gst.GetUnTest(lstTests.getSelectedIndex());
+                 
+                    e.getSesTests().add(t);
                     gst.getLesElevesInscrits().add(e);
-//                 Test t =new Test(gst.getTousLesTests().get(lstTests.getSelectedIndex()).getNomTest());
-              }
+                    trouveEleve=true;
+                    estVide=true;
+                }
+                else
+                {
+                    int i=0;
+                    for(Eleve e : gst.getLesElevesInscrits())
+                    {
+                        if(e.getNomEleve().compareTo(gst.GetUnEleve(lstEleves.getSelectedIndex()).toString())==0)
+                        {
+                            trouveEleve=true;
+                            for(Test t : gst.getTousLesTests())
+                            {
+                                if(t.getNomTest().compareTo(gst.GetUnTest(lstTests.getSelectedIndex()).toString())==0)
+                                {
+                                    trouveTest=true;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+                if(trouveTest)
+                {
+                    JOptionPane.showMessageDialog(this, "Déjà inscrit pour ce test");
+                }
                 for (Eleve eleve : gst.getLesElevesInscrits())
                    {
                        cboElevesInscrits.addItem(eleve.getNomEleve());
