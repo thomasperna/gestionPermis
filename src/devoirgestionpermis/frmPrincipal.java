@@ -291,6 +291,26 @@ public class frmPrincipal extends javax.swing.JFrame {
                 {
                     JOptionPane.showMessageDialog(this, "Déjà inscrit pour ce test");
                 }
+                else
+                {
+                    if(!trouveEleve)
+                    {
+                        Eleve e=gst.GetUnEleve(lstEleves.getSelectedIndex()); 
+                        Test t=gst.GetUnTest(lstTests.getSelectedIndex());
+                        
+                         e.getSesTests().add(t);
+                        gst.getLesElevesInscrits().add(e);
+                    }
+                    else
+                    {
+                        if(!estVide)
+                        {
+                            Test t=gst.GetUnTest(lstTests.getSelectedIndex());
+                            
+                        } 
+                    }
+                }
+                cboElevesInscrits.removeAllItems();
                 for (Eleve eleve : gst.getLesElevesInscrits())
                    {
                        cboElevesInscrits.addItem(eleve.getNomEleve());
