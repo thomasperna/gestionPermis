@@ -255,9 +255,19 @@ public class frmPrincipal extends javax.swing.JFrame {
             }
             else
             {
-                if(gst.GetUnEleve(lstEleves.getSelectedIndex())){
-                    
-                }
+              if(gst.getLesElevesInscrits().isEmpty())
+              {
+                 Eleve e=gst.GetUnEleve(lstEleves.getSelectedIndex()); 
+                 Test t=gst.GetUnTest(lstTests.getSelectedIndex());
+                 e.getSesTests().add(t);
+                    // On l'ajoute à notre liste des inscrits dans le gestionnaire
+                    gst.getLesElevesInscrits().add(e);
+//                 Test t =new Test(gst.getTousLesTests().get(lstTests.getSelectedIndex()).getNomTest());
+              }
+                for (Eleve eleve : gst.getLesElevesInscrits())
+                   {
+                       cboElevesInscrits.addItem(eleve.getNomEleve());
+                   }
             }
         } 
         
@@ -265,7 +275,7 @@ public class frmPrincipal extends javax.swing.JFrame {
 
     private void btnModificationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificationActionPerformed
         // TODO add your handling code here:
-        
+        JOptionPane.showMessageDialog(this, "Modification enregistrée");
         // A vous de jouer
         
         
